@@ -3,54 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebChatSales - Autonomous AI Sales Platform</title>
+    <title>WebChatSales - Autonomous AI Employees</title>
     <style>
         :root {
-            --olive: #808000;
-            --navy: #000080;
-            --charcoal: #36454F;
-            --white: #FFFFFF;
+            --primary-blue: #2563eb;
+            --dark-blue: #1e40af;
+            --accent-green: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --background: #f8fafc;
+            --white: #ffffff;
         }
-        body {
-            background: var(--charcoal);
-            color: var(--white);
-            font-family: 'Segoe UI', sans-serif;
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-        .header {
-            background: var(--navy);
-            padding: 1rem 2rem;
+        
+        body {
+            background: 
+                linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.9)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.02"><rect width="100" height="100" fill="%232563eb"/></svg>');
+            background-size: 100px 100px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header with your logo */
+        header {
+            background: var(--white);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
         }
+        
         .logo {
-            color: var(--olive);
-            font-size: 1.8rem;
-            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .cta-button {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: var(--dark-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: 
+                linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" opacity="0.03"><circle cx="100" cy="100" r="80" fill="%2310b981"/></svg>');
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .ai-team {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .ai-employee {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 800px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* Live Demo Section */
+        .demo-section {
+            background: var(--white);
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .demo-chat {
+            background: var(--background);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .message {
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        
+        .message-bot {
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            align-self: flex-start;
+        }
+        
+        .message-user {
+            background: var(--primary-blue);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .demo-prompts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .prompt {
+            background: var(--background);
+            border: 1px solid #e5e7eb;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .prompt:hover {
+            background: #e5e7eb;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">WebChatSales</div>
-        <nav>
-            <a href="#demo" style="color: var(--white); text-decoration: none; margin: 0 1rem;">Live Demo</a>
-            <button style="background: var(--olive); color: var(--charcoal); padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold;">Get Started</button>
-        </nav>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">WC</div>
+                    <span>WebChatSales</span>
+                </div>
+                <nav>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How it Works</a>
+                    <a href="#plans">Plans</a>
+                    <a href="#demo">Demo</a>
+                    <a href="#contact">Contact</a>
+                    <button class="cta-button">See Demo</button>
+                    <button class="cta-button" style="background: var(--accent-green);">See Plans</button>
+                </nav>
+            </div>
+        </div>
     </header>
 
-    <main style="padding: 2rem; text-align: center;">
-        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sales While You Sleep</h1>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Your 24/7 Autonomous AI Sales Team</p>
-        
-        <!-- Demo Sections Will Go Here -->
-        <div id="demo-sections">
-            <!-- We'll add the actual working demos here -->
+    <section class="hero">
+        <div class="container">
+            <h1>Autonomous AI Employees for Your Website</h1>
+            <p class="hero-subtitle">
+                Abby (sales), Brandon (strategy), Sable (emotion), Gruff (security) — working together to capture leads, qualify, and book demos while you sleep.
+            </p>
+            
+            <div class="ai-team">
+                <div class="ai-employee">
+                    <strong>Abby</strong> - Sales AI
+                </div>
+                <div class="ai-employee">
+                    <strong>Brandon</strong> - Strategy AI
+                </div>
+                <div class="ai-employee">
+                    <strong>Sable</strong> - Emotion AI
+                </div>
+                <div class="ai-employee">
+                    <strong>Gruff</strong> - Security AI
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div>Coverage</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">+38%</div>
+                    <div>Lead Capture</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">-60%</div>
+                    <div>Response Time</div>
+                </div>
+            </div>
+            
+            <div class="hero-buttons">
+                <button class="btn-primary">Start Free Demo</button>
+                <button class="btn-secondary">How it Works</button>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <script src="script.js"></script>
+    <section class="demo-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Live Demo — Ask Abby</h2>
+            <p style="text-align: center; color: var(--text-light); margin-bottom: 2rem;">
+                Try "price", "book demo", "Compare HubSpot", "Detroit", "refund", "security"
+            </p>
+            
+            <div class="demo-container">
+                <div class="demo-chat">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message message-bot">
+                            Hi! I'm Abby, your AI sales assistant. I can help with pricing, demo bookings, comparisons, and any questions about our platform. What would you like to know?
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Type your question...">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                    <div class="demo-prompts">
+                        <div class="prompt" onclick="usePrompt('price')">price</div>
+                        <div class="prompt" onclick="usePrompt('book demo')">book demo</div>
+                        <div class="prompt" onclick="usePrompt('Compare HubSpot')">Compare HubSpot</div>
+                        <div class="prompt" onclick="usePrompt('security')">security</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3>What Abby Can Do:</h3>
+                    <ul style="margin-top: 1rem; line-height: 2;">
+                        <li>📊 Provide detailed pricing plans</li>
+                        <li>📅 Schedule live demos instantly</li>
+                        <li>🔍 Compare with competitors</li>
+                        <li>🛡️ Explain security features</li>
+                        <li>💼 Handle custom enterprise requests</li>
+                        <li>📈 Discuss ROI and case studies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                setTimeout(() => {
+                    const response = generateResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000);
+            }
+        }
+        
+        function usePrompt(prompt) {
+            document.getElementById('chatInput').value = prompt;
+            sendMessage();
+        }
+        
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message message-${sender}`;
+            messageDiv.textContent = text;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function generateResponse(message) {
+            const lowerMsg = message.toLowerCase();
+            
+            if (lowerMsg.includes('price') || lowerMsg.includes('cost')) {
+                return "We offer three plans: Starter ($279/mo), Growth ($799/mo), and Enterprise ($2199/mo). All include 24/7 AI sales coverage. Which plan interests you?";
+            } else if (lowerMsg.includes('demo') || lowerMsg.includes('book')) {
+                return "I'd love to schedule a demo! We have openings tomorrow and Thursday. What time works best for your team?";
+            } else if (lowerMsg.includes('hubspot') || lowerMsg.includes('compare')) {
+                return "While HubSpot is great for marketing, we specialize in AI-powered sales conversations. We integrate with HubSpot and provide 24/7 lead qualification they don't offer.";
+            } else if (lowerMsg.includes('security') || lowerMsg.includes('safe')) {
+                return "Security is our top priority. We're SOC 2 compliant, encrypt all conversations, and have Gruff (our security AI) monitoring 24/7. Your data is completely secure.";
+            } else if (lowerMsg.includes('detroit')) {
+                return "We work with several businesses in Detroit! The automotive and manufacturing sectors love our AI for handling after-hours inquiries and qualifying leads.";
+            } else {
+                return "I'm here to help! Ask me about pricing, features, security, or schedule a demo to see our platform in action.";
+            }
+        }
+        
+        // Enter key support
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
 </body>
 </html>
