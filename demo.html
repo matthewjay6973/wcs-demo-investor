@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebChatSales - Autonomous AI Employees</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #6b7280;
+            --background: #f8fafc;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background: var(--background);
+            color: var(--dark);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem 0;
+            color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem 0;
+            color: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+        
+        .ai-team {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .ai-employee {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .stat {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .demo-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .prompts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .prompt {
+            background: var(--background);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .chat-container {
+            margin: 1rem 0;
+        }
+        
+        .chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--background);
+        }
+        
+        .message {
+            margin: 0.5rem 0;
+            padding: 0.75rem;
+            border-radius: 6px;
+            max-width: 80%;
+        }
+        
+        .message-bot {
+            background: var(--white);
+            border: 1px solid #e5e7eb;
+            margin-right: auto;
+        }
+        
+        .message-user {
+            background: var(--primary);
+            color: var(--white);
+            margin-left: auto;
+        }
+        
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+        }
+        
+        .chat-input button {
+            background: var(--secondary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .social-preview {
+            background: var(--background);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Autonomous AI Employees for Your Website</h1>
+        <p>Abby (sales), Brandon (strategy), Sable (emotion), Gruff (security) — working together to capture leads, qualify, and book demos while you sleep.</p>
+    </header>
+
+    <!-- AI Team Section -->
+    <div class="ai-team">
+        <div class="ai-employee">
+            <h3>Abby - Sales AI</h3>
+            <p>Handles pricing, demos, and lead qualification</p>
+        </div>
+        <div class="ai-employee">
+            <h3>Brandon - Strategy AI</h3>
+            <p>Develops sales strategies and optimizations</p>
+        </div>
+        <div class="ai-employee">
+            <h3>Sable - Emotion AI</h3>
+            <p>Manages customer emotions and relationships</p>
+        </div>
+        <div class="ai-employee">
+            <h3>Gruff - Security AI</h3>
+            <p>Ensures data security and compliance</p>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="stat">
+            <span class="stat-number">24/7</span>
+            <span>Coverage</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">+38%</span>
+            <span>Lead Capture</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">-60%</span>
+            <span>Response Time</span>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <button class="btn btn-primary">Start Free Demo</button>
+        <button class="btn btn-secondary">How it Works</button>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <div class="tab active" data-tab="chat">Chat Demo</div>
+        <div class="tab" data-tab="social">Social Media</div>
+        <div class="tab" data-tab="website">Website Generator</div>
+        <div class="tab" data-tab="pricing">Pricing</div>
+    </div>
+
+    <!-- Chat Demo Tab -->
+    <div id="chat" class="tab-content active">
+        <div class="demo-section">
+            <h2>Live Demo — Ask Abby</h2>
+            <p>Try: "price", "book demo", "compare HubSpot", "Detroit", "refund", "security"</p>
+            
+            <div class="prompts">
+                <div class="prompt" onclick="usePrompt('price')">price</div>
+                <div class="prompt" onclick="usePrompt('book demo')">book demo</div>
+                <div class="prompt" onclick="usePrompt('compare HubSpot')">compare HubSpot</div>
+                <div class="prompt" onclick="usePrompt('Detroit')">Detroit</div>
+                <div class="prompt" onclick="usePrompt('security')">security</div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message message-bot">
+                        Hi! I'm Abby, your AI sales assistant. I can help with pricing, demo bookings, comparisons, and any questions about our platform.
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="Type your question...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social Media Tab -->
+    <div id="social" class="tab-content">
+        <div class="demo-section">
+            <h2>SOCIALS: THINK & START YOUR GIRLS INTERNET</h2>
+            
+            <div class="social-preview">
+                <h3>Facebook Post Generator</h3>
+                <input type="text" id="socialTopic" placeholder="Enter topic (e.g., dog grooming promotion)" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;">
+                <button onclick="generateSocialPost()" class="btn btn-primary">Generate Post</button>
+                <div id="socialResult" style="margin-top: 1rem; padding: 1rem; background: var(--white); border-radius: 4px; display: none;">
+                    <strong>Generated Post:</strong>
+                    <p id="postContent"></p>
+                    <button onclick="copyToClipboard()" class="btn btn-secondary">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Website Generator Tab -->
+    <div id="website" class="tab-content">
+        <div class="demo-section">
+            <h2>Website Generator</h2>
+            
+            <div style="margin: 1rem 0;">
+                <input type="text" id="businessName" placeholder="Business Name" value="Paws & Claws Pet Store" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;">
+                <button onclick="generateWebsite()" class="btn btn-primary">Generate Website Preview</button>
+            </div>
+            
+            <div id="websitePreview" style="display: none; margin-top: 1rem; padding: 1rem; background: var(--white); border-radius: 4px;">
+                <h3 id="previewTitle"></h3>
+                <p>Professional website generated instantly!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Tab -->
+    <div id="pricing" class="tab-content">
+        <div class="demo-section">
+            <h2>Sales Pricing?</h2>
+            <p>Our plans are Starter ($279/mo), Growth ($799/mo), and Platinum ($1,999/mo). Want me to book a quick 10-min fit call?</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">$279</span>
+                    <span>Starter/mo</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$799</span>
+                    <span>Growth/mo</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$1,999</span>
+                    <span>Platinum/mo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                setTimeout(() => {
+                    const response = generateResponse(message);
+                    addMessage(response, 'bot');
+                }, 1000);
+            }
+        }
+        
+        function usePrompt(prompt) {
+            document.getElementById('chatInput').value = prompt;
+            sendMessage();
+        }
+        
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message message-${sender}`;
+            messageDiv.textContent = text;
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function generateResponse(message) {
+            const lowerMsg = message.toLowerCase();
+            
+            if (lowerMsg.includes('price') || lowerMsg.includes('cost')) {
+                return "Our plans are Starter ($279/mo), Growth ($799/mo), and Platinum ($1,999/mo). Want me to book a quick 10-min fit call?";
+            } else if (lowerMsg.includes('demo') || lowerMsg.includes('book')) {
+                return "I'd love to schedule a demo! We have openings tomorrow and Thursday. What time works best for your team?";
+            } else if (lowerMsg.includes('hubspot') || lowerMsg.includes('compare')) {
+                return "While HubSpot is great for marketing, we specialize in AI-powered sales conversations. We integrate with HubSpot and provide 24/7 lead qualification they don't offer.";
+            } else if (lowerMsg.includes('security') || lowerMsg.includes('safe')) {
+                return "Security is our top priority. We're SOC 2 compliant, encrypt all conversations, and have Gruff (our security AI) monitoring 24/7.";
+            } else if (lowerMsg.includes('detroit')) {
+                return "We work with several businesses in Detroit! The automotive and manufacturing sectors love our AI for handling after-hours inquiries.";
+            } else {
+                return "I can help with pricing, demos, comparisons, and setup. What's your goal and timeline?";
+            }
+        }
+        
+        // Social Media Generator
+        function generateSocialPost() {
+            const topic = document.getElementById('socialTopic').value || "AI sales automation";
+            const posts = [
+                `🚀 Transform your sales with AI! ${topic} just got 10x easier with WebChatSales. #AI #SalesRevolution`,
+                `💡 Tired of missing leads? Our AI handles ${topic} 24/7 while you sleep. #SalesAutomation #WebChatSales`,
+                `📈 ${topic} just became autonomous! Watch your leads convert with zero extra work. #FutureOfSales`
+            ];
+            
+            const randomPost = posts[Math.floor(Math.random() * posts.length)];
+            document.getElementById('postContent').textContent = randomPost;
+            document.getElementById('socialResult').style.display = 'block';
+        }
+        
+        function copyToClipboard() {
+            const content = document.getElementById('postContent').textContent;
+            navigator.clipboard.writeText(content);
+            alert('Post copied to clipboard!');
+        }
+        
+        // Website Generator
+        function generateWebsite() {
+            const businessName = document.getElementById('businessName').value || "Your Business";
+            document.getElementById('previewTitle').textContent = `${businessName} - Professional Website`;
+            document.getElementById('websitePreview').style.display = 'block';
+        }
+        
+        // Enter key support for chat
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+</body>
+</html>
