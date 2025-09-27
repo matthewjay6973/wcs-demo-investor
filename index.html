@@ -1,185 +1,56 @@
-[NAVY BLUE HEADER]
-WebChatSales (OLIVE GREEN) | Navigation | Get Started Today
-
-[CHARCOAL MAIN CONTENT with professional underlay photos]
-"Sales While You Sleep" - Giant tagline
-"We are an autonomous AI sales staff waiting to grow your business"
-
-[Benefits Section]
-• 24/7 Lead Qualification
-• Automated Meeting Booking
-• Sales Team Training
-• Objection Handling AI
-
-[NAVY BLUE FOOTER]
-Pricing: $279 | $799 | $2199 | Contact
-Objection Handling We'll Include:
-"But AI can't build rapport" → "Our AI learns your voice and style"
-
-"What about complex deals?" → "AI handles qualification, humans close big deals"
-
-"Integration costs?" → "Plugs into your existing CRM in 15 minutes"
-
-Let Me Build the Header & Hero Section First:
-html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebChatSales - Autonomous AI Sales Team</title>
+    <title>WebChatSales - Autonomous AI Sales Platform</title>
     <style>
         :root {
-            --olive-green: #808000;
-            --navy-blue: #000080;
+            --olive: #808000;
+            --navy: #000080;
             --charcoal: #36454F;
             --white: #FFFFFF;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-        
         body {
             background: var(--charcoal);
             color: var(--white);
-            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        
-        /* Navy Blue Header */
-        header {
-            background: var(--navy-blue);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .header {
+            background: var(--navy);
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
+            color: var(--olive);
             font-size: 1.8rem;
             font-weight: 800;
-            color: var(--olive-green);
-        }
-        
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: 500;
-        }
-        
-        .cta-button {
-            background: var(--olive-green);
-            color: var(--charcoal);
-            padding: 10px 25px;
-            border: none;
-            border-radius: 5px;
-            font-weight: 700;
-            cursor: pointer;
-        }
-        
-        /* Hero Section with Underlay */
-        .hero {
-            background: 
-                linear-gradient(rgba(54, 69, 79, 0.9), rgba(54, 69, 79, 0.9)),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23000080" opacity="0.1"><circle cx="50" cy="50" r="2"/></svg>');
-            background-size: cover;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-        
-        .tagline {
-            color: var(--olive-green);
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-        }
-        
-        .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
         }
     </style>
 </head>
 <body>
-    <!-- Navy Blue Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">WebChatSales</div>
-            <nav>
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#demo">Live Demo</a>
-                <a href="#testimonials">Results</a>
-            </nav>
-            <button class="cta-button">Get Started Today</button>
-        </div>
+    <header class="header">
+        <div class="logo">WebChatSales</div>
+        <nav>
+            <a href="#demo" style="color: var(--white); text-decoration: none; margin: 0 1rem;">Live Demo</a>
+            <button style="background: var(--olive); color: var(--charcoal); padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold;">Get Started</button>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Sales While You Sleep</h1>
-            <div class="tagline">Your 24/7 Autonomous AI Sales Team</div>
-            <p class="subtitle">We are an autonomous AI sales staff waiting to grow your business. Lead qualification, meeting booking, objection handling - all while you focus on what matters.</p>
-            
-            <!-- Benefits Grid -->
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem;">
-                <div style="text-align: left;">
-                    <h3 style="color: var(--olive-green); margin-bottom: 1rem;">✓ For Sales Teams</h3>
-                    <p>Augment your team with AI that never sleeps, handles objections, and qualifies leads 24/7</p>
-                </div>
-                <div style="text-align: left;">
-                    <h3 style="color: var(--olive-green); margin-bottom: 1rem;">✓ For Business Owners</h3>
-                    <p>Grow revenue without hiring more staff. Our AI becomes your sales department</p>
-                </div>
-            </div>
+    <main style="padding: 2rem; text-align: center;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem;">Sales While You Sleep</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Your 24/7 Autonomous AI Sales Team</p>
+        
+        <!-- Demo Sections Will Go Here -->
+        <div id="demo-sections">
+            <!-- We'll add the actual working demos here -->
         </div>
-    </section>
+    </main>
 
-    <!-- Navy Blue Footer -->
-    <footer style="background: var(--navy-blue); padding: 3rem 0; margin-top: 4rem;">
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center;">
-            <div class="logo" style="margin-bottom: 2rem;">WebChatSales</div>
-            <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
-                <div>
-                    <strong>Pricing</strong><br>
-                    $279/mo | $799/mo | $2199/mo
-                </div>
-                <div>
-                    <strong>Results</strong><br>
-                    230% Average ROI | 45+ Businesses
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
